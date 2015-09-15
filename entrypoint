@@ -20,7 +20,7 @@ if [ -f "${CA_CERTIFICATES_PATH}"  ]; then
 fi
 
 # launch docker
-exec /usr/local/bin/wrapdocker
+/usr/local/bin/wrapdocker
 
 # launch gitlab-ci-multi-runner passing all arguments
 exec gitlab-ci-multi-runner "$@"
