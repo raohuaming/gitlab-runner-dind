@@ -22,5 +22,11 @@ fi
 # launch docker
 /usr/local/bin/wrapdocker
 
+# launch a builder_cache container
+RUNNING=$(docker inspect builder_cache 2> /dev/null)
+if [ $? -eq 1  ]; then
+  docker run --name builder_cache -v /home/gitlab-runner/node_modules:/app/node_modules tutum/builder true
+fi
+
 # launch gitlab-ci-multi-runner passing all arguments
 exec gitlab-ci-multi-runner "$@"

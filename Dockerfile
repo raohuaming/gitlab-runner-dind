@@ -13,6 +13,12 @@ RUN echo "deb https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ 
 ADD entrypoint /
 RUN chmod +x /entrypoint
 
+ADD tutum-builder /usr/bin
+RUN chmod +x /usr/bin/tutum-builder
+
+RUN echo "Cmnd_Alias TUTUM_BUILD = /usr/bin/tutum-builder *" >> /etc/sudoers
+RUN echo "gitlab-runner ALL=NOPASSWD: TUTUM_BUILD" >> /etc/sudoers
+
 VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
 ENTRYPOINT ["/entrypoint"]
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
