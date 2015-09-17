@@ -13,7 +13,7 @@ RUN echo "deb https://packages.gitlab.com/runner/gitlab-ci-multi-runner/ubuntu/ 
 ADD entrypoint /
 RUN chmod +x /entrypoint
 
-ADD tutum-builder /usr/bin
+ADD tutum-builder /usr/bin/
 RUN chmod +x /usr/bin/tutum-builder
 
 RUN echo "Cmnd_Alias TUTUM_BUILD = /usr/bin/tutum-builder *" >> /etc/sudoers
