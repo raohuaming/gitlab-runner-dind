@@ -19,7 +19,7 @@ RUN chmod +x /usr/bin/tutum-builder
 RUN echo "Cmnd_Alias TUTUM_BUILD = /usr/bin/tutum-builder *" >> /etc/sudoers
 RUN echo "gitlab-runner ALL=NOPASSWD: TUTUM_BUILD" >> /etc/sudoers
 
-VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
+VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner", "/cache/node_modules" ]
 ENTRYPOINT ["/entrypoint"]
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
 
